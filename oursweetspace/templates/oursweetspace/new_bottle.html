@@ -1,0 +1,22 @@
+{% extends 'oursweetspace/base.html' %}
+
+{% block content %}
+  <p>制作一个漂流瓶！</p>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="id_title">标题：</label>
+    {{ form.title }}
+    <label for="id_text">正文:</label>
+    {{ form.text }}
+    <label for="id_image">上传图片（可选）:</label>
+    {{ form.image }}
+    <label for="id_date_unlock">解锁日期:</label>
+    {{ form.date_unlock }}
+    <button type="submit">扔进大海！</button>
+  </form>
+
+
+  <p>宝宝注意哦！！！漂流瓶一旦扔出，会越飘越远，再也不能修改了哦！</p>
+
+{% endblock content %}

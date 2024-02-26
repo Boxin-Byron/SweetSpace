@@ -1,0 +1,24 @@
+{% extends "oursweetspace/base.html" %}
+
+{% block content %}
+
+  <p>
+  	<a href="{% url 'oursweetspace:topic' topic_id=topic.id %}">{{topic}}</a>
+  </p>
+
+  <p>Edit entry:</p>
+
+  <form action="{% url 'oursweetspace:edit_entry' entry_id=entry.id %}" method="post">
+  	{% csrf_token %}
+    {{form.as_p}}
+    <button name='submit'>Save changes</button>
+  </form>
+
+
+  <form action="{% url 'oursweetspace:delete_entry' entry.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">永久删除这一条目！</button>
+  </form>
+
+
+{% endblock content %}

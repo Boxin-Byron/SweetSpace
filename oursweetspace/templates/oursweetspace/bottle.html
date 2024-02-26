@@ -1,0 +1,27 @@
+{% extends 'oursweetspace/base.html' %}
+
+{% load static %}
+
+{% block page_header %}
+<head>
+    <meta charset="UTF-8">
+    <title>{{ bottle.title }}</title>
+
+</head>
+<body>
+    <div class="container">
+        <h1>{{ bottle.title }}</h1>
+        <p>{{ bottle.text | linebreaksbr }}</p>
+        {% if bottle.image %}
+            <img src="{{ bottle.image.url }}" alt="{{ bottle.title }}">
+        {% else %}
+            <p> </p>
+        {% endif %}
+        <p>创建时间: {{ bottle.date_added }}</p>
+        {% if bottle.date_unlock %}
+            <p>解锁时间: {{ bottle.date_unlock }}</p>
+        {% endif %}
+    </div>
+</body>
+
+{% endblock  %}

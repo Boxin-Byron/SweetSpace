@@ -1,0 +1,24 @@
+{% extends 'oursweetspace/base.html' %}
+
+{% block content %}
+<h2>已拾起的漂流瓶</h2>
+
+<p>小小漂流瓶，载着爱，顺着时空的河流缓缓前进，缓缓漂流，直到很久···很久后的某一天，悄悄抵达ta心灵的彼岸······
+</p>
+
+<ul>
+    {% for bottle in bottles %}
+    <p>暂时还没有新的漂流瓶飘过来哦，ta一定想把藏在心底的话，告诉很久很久之后的你，耐心等等吧！</p>
+    <li>
+        <a href="{% url 'oursweetspace:bottle' bottle_id=bottle.id %}">{{ bottle.title }}</a>
+        <p>这个漂流瓶漂呀漂，终于在{{ bottle.date_unlock }}抵达了你的岸边！</p>
+        <!-- 其他你想显示的字段 -->
+    </li>
+    {% empty %}
+    <li>呜呜！还没有漂流瓶飘过来哦，ta一定想把要说的话，告诉很久很久之后的你，耐心等等吧！</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'oursweetspace:new_bottle' %}">扔出一个漂流瓶，写下对心爱的ta想说的话！</a>
+<p>    可以设置 漂流的最短时限/预期到达时间，之后随机的某一天，ta就会收到你的留言啦！</p>
+{% endblock %}

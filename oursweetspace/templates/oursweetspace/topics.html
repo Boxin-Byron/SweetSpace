@@ -1,0 +1,20 @@
+{% extends "oursweetspace/base.html" %}
+
+{% block page_header %}
+  <h1>心愿清单</h1>
+{% endblock page_header %}
+
+{% block content %}
+  <ul>
+    {% for topic in usertopics %}
+      <li><h3>
+        <a href="{% url 'oursweetspace:topic' topic_id=topic.id %}">{{ topic }}</a>
+      </h3></li>
+    {% empty %}
+      <li><h3>No topics have been added yet.</h3></li>
+    {% endfor %}
+  </ul>
+
+  <h3><a href="{% url 'oursweetspace:new_topic' %}">Add a new topic</a></h3>
+
+{% endblock content %}
